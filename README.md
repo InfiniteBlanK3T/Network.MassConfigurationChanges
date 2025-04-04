@@ -1,6 +1,8 @@
 # Mass Network Configuration Tool (MNC)
 
 A graphical tool built with Python and Tkinter to apply configuration commands simultaneously to multiple network devices (switches, routers) via SSH.
+![image](https://github.com/user-attachments/assets/4c3c1ca5-1145-4215-97d4-d1f7fd927208)
+
 
 ## Features
 
