@@ -73,5 +73,3 @@ A graphical tool built with Python and Tkinter to apply configuration commands s
 ## Contributing
 
 *(Optional: Add guidelines if you want others to contribute. E.g., fork the repo, create a branch, submit a pull request.)*
-
-## License
