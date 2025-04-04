@@ -1,0 +1,37 @@
+<?define name = "Network Configuration Tools v2.0"?>
+<?define exe = "MCCSwitchesv1.0.exe"?>
+<?define path = "C:\Projects\Network.MassConfigurationChanges\dist\"?>
+<?define silentArgs = ""?>
+<?define version = "2.0.0"?>
+<?define publisher = "Thomas Vo 3"?>
+<?define guid = "18730bd2-16e1-411d-9d24-517220977e23"?>
+
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+        <Package Name="$(var.name)" Manufacturer="$(var.publisher)" Version="$(var.version)"
+                UpgradeCode="$(var.guid)" Scope="perMachine">
+
+                <Media Id="1" Cabinet="setup.cab" EmbedCab="yes" />
+
+                <Feature Id="InstallFeature" Title="Install Feature">
+                        <ComponentRef Id="file" />
+                </Feature>
+
+                <CustomAction Id="run_exe" Return="asyncWait" Execute="commit"
+                        ExeCommand="$(var.silentArgs)" HideTarget="yes" Impersonate="no"
+                        FileRef="executable" />
+
+                <InstallExecuteSequence>
+                        <Custom Action="run_exe" After="InstallFiles"
+                                Condition="NOT Installed AND NOT REMOVE" />
+                </InstallExecuteSequence>
+
+                <StandardDirectory Id="TempFolder">
+                        <Directory Id="INSTALLLOCATION" Name="$(var.guid)">
+                                <Component Id="file" DiskId="1">
+                                        <File Id="executable" Name="$(var.exe)"
+                                                Source="$(var.path)\$(var.exe)" />
+                                </Component>
+                        </Directory>
+                </StandardDirectory>
+        </Package>
+</Wix>
